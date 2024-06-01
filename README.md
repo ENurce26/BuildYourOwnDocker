@@ -1,51 +1,58 @@
-[![progress-banner](https://backend.codecrafters.io/progress/docker/a45a1410-7e61-4c6f-a89f-1d4ac91d1278)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+Docker-Like Tool in Python
 
-This is a starting point for Python solutions to the
-["Build Your Own Docker" Challenge](https://codecrafters.io/challenges/docker).
+This project is a lightweight tool written in Python that emulates basic Docker functionality. It provides filesystem and process isolation, as well as the ability to fetch images from Docker Hub.
+Setup
+Requirements
 
-In this challenge, you'll build a program that can pull an image from
-[Docker Hub](https://hub.docker.com/) and execute commands in it. Along the way,
-we'll learn about [chroot](https://en.wikipedia.org/wiki/Chroot),
-[kernel namespaces](https://en.wikipedia.org/wiki/Linux_namespaces), the
-[docker registry API](https://docs.docker.com/registry/spec/api/) and much more.
+    Python 3.6 or later
+    Docker installed locally (for testing)
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
+Installation
 
-# Passing the first stage
+    Clone the repository:
 
-The entry point for your Docker implementation is `app/main.py`. Study and
-uncomment the relevant code, and push your changes to pass the first stage:
+    bash
 
-```sh
-git add .
-git commit -m "pass 1st stage" # any msg
-git push origin master
-```
+git clone https://github.com/your-username/your-repository.git
 
-That's all!
+Install the required Python packages:
 
-# Stage 2 & beyond
+bash
 
-Note: This section is for stages 2 and beyond.
+pip install -r requirements.txt
 
-You'll use linux-specific syscalls in this challenge. so we'll run your code
-_inside_ a Docker container.
+Ensure Docker is installed and running:
 
-Please ensure you have [Docker installed](https://docs.docker.com/get-docker/)
-locally.
+bash
 
-Next, add a [shell alias](https://shapeshed.com/unix-alias/):
+    docker --version
 
-```sh
-alias mydocker='docker build -t mydocker . && docker run --cap-add="SYS_ADMIN" mydocker'
-```
+Usage
+Running the Tool
 
-(The `--cap-add="SYS_ADMIN"` flag is required to create
-[PID Namespaces](https://man7.org/linux/man-pages/man7/pid_namespaces.7.html))
+To use the tool, run the following command:
 
-You can now execute your program like this:
+bash
 
-```sh
-mydocker run alpine:latest /usr/local/bin/docker-explorer echo hey
-```
+python your_docker.py <image_name> <command> [arguments]
+
+Replace <image_name> with the name of the Docker image you want to use and <command> with the command you want to execute inside the container. Additional arguments can be passed as needed.
+Example
+
+bash
+
+python your_docker.py alpine:latest /bin/echo "Hello, World!"
+
+Configuration
+codecrafters.yml
+
+The codecrafters.yml file contains configuration for the CodeCrafters platform, allowing you to test your Docker-like tool in their environment. It includes setup and test instructions.
+Dockerfile
+
+The Dockerfile contains instructions for building the Docker image used by your tool. It specifies the base image and any dependencies needed for your tool to run.
+your_docker.sh
+
+The your_docker.sh script is the entry point for your Docker-like tool. It sets up filesystem and process isolation and executes the specified command inside the container.
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
